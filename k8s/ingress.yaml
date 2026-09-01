@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: restaurant
+  namespace: restaurant
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: restaurant.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: restaurant
+                port:
+                  number: 81
